@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Receta</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button shape="round" href="/home">
+      </ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label></ion-label>
+      <ion-label>{{receta.title}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tiempo de preparación: </ion-label>
+      <ion-label>{{receta.tiempoPrep}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categoria: </ion-label>
+      <ion-label>{{receta.categoria}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ingredientes: </ion-label>
+      <ion-label>{{receta.ingredientes}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ingrediente alergenos: </ion-label>
+      <ion-label>{{receta.ingredientesAlergenos}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Elaboración: </ion-label>
+      <ion-label>{{receta.description}}</ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
+</ion-content>

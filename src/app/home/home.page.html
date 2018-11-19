@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Recetas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button shape="round" href="/edit" routerDirection="forward">
+        <ion-icon name="add">Añadir Recetas</ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+      <ion-item *ngFor="let t of recetas">
+        <ion-label>{{t.title}}</ion-label>
+        <ion-icon (click)="infoRec(t.id)" name="eye" color="medium"></ion-icon>
+        <ion-icon (click)="editReceta(t.id)" name="create" color="medium"></ion-icon>
+        <ion-icon (click)="deleteDialog(t.title, t.id)" name="trash" color="medium"></ion-icon>       
+      </ion-item>
+  </ion-list>
+  
+  
+</ion-content>
