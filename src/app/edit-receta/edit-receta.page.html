@@ -30,11 +30,9 @@
       <ion-select-option value="Vegetales">Vegetales</ion-select-option>
       <ion-select-option value="Aperitivos">Aperitivos</ion-select-option>
       <ion-select-option value="Aves">Aves</ion-select-option>
-      <ion-select-option value="Arroz">Arroz</ion-select-option>
-      <ion-select-option value="Legumbres">Legumbres</ion-select-option>
       <ion-select-option value="Postres">Postres</ion-select-option>
       <ion-select-option value="Sopa">Sopa</ion-select-option>
-      <ion-select-option value="Pasta">Pasta</ion-select-option>
+      <ion-select-option value="Bebida">Bebidas</ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -53,7 +51,7 @@
     <ion-input clearInput required [(ngModel)]="receta.ingredientesAlergenos"></ion-input>
   </ion-item>
 
-  <ion-button (click)="saveTodo(receta)" id="boton" color="light" expand="full">
+  <ion-button (click)="guardarReceta(receta)" id="boton" color="light" expand="full">
     <ion-icon name="save"></ion-icon>
     Guardar
 

@@ -18,9 +18,9 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.recetaService.getTodos().then(
-      data => this.recetas = data //El getTodo devuelve una promesa cuando se cumple la promesa entra al método, mete los datos en el data y una vez esté lo asignamos.
-    ); //Accedo al servicio (donde se guardan los datos) y esto me devuelve un array de todos que se guarda aquí en esta clase
+    this.recetaService.getReceta().then(
+      data => this.recetas = data 
+    ); 
     console.log(this.recetas);
   }
 
@@ -39,7 +39,7 @@ export class HomePage implements OnInit {
         }, {
           text: 'Aceptar',
           handler: () => {
-            this.recetaService.deleteTodo(id).then(() => this.recetaService.getTodos().then(
+            this.recetaService.borararReceta(id).then(() => this.recetaService.getReceta().then(
               data => this.recetas = data
               )
             );
@@ -51,7 +51,7 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
-  editTodo(id: number) {
+  editReceta(id: number) {
     this.navController.navigateForward('/edit/' + id);
   }
 

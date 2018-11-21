@@ -25,24 +25,8 @@ export class InfoRecetaPage implements OnInit {
     console.log(id);
     if (id) {
       this.edit = true;
-      this.receta = this.recetaService.getTodoById(parseInt(id));
+      this.receta = this.recetaService.getRecetaById(parseInt(id));
       console.log(this.receta);
     }    
-  }
-
-  saveTodo(receta: Receta) {
-    if(this.edit) {
-      this.recetaService.saveTodo(this.receta).then(
-        () => this.nav.goBack(true),
-        (error) => console.error('Error al guardarlo', error)
-      );
-    } else {
-      this.receta.id = this.recetaService.recetaCounter;
-      console.log(this.recetaService.recetaCounter);
-      this.recetaService.newTodo(this.receta).then(
-        () => this.nav.goBack(true),
-        (error) => console.error('Error al guardarlo', error)
-      );
-    }
   }
 }

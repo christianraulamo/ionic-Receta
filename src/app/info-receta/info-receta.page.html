@@ -11,38 +11,36 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list lines="full">
-    <ion-item>
-      <ion-label></ion-label>
-      <ion-label>{{receta.title}}</ion-label>
-    </ion-item>
+  <ion-grid lines="full">
+    <ion-row>
+      <ion-label class="a">{{receta.title}}</ion-label>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Tiempo de preparación: </ion-label>
-      <ion-label>{{receta.tiempoPrep}}</ion-label>
-    </ion-item>
+    <ion-row>
+      <ion-col size="8">Tiempo de preparación: </ion-col>
+      <ion-col>{{receta.tiempoPrep}}</ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Categoria: </ion-label>
-      <ion-label>{{receta.categoria}}</ion-label>
-    </ion-item>
+    <ion-row>
+      <ion-col size="8">Categoria: </ion-col>
+      <ion-col>{{receta.categoria}}</ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Ingredientes: </ion-label>
-      <ion-label>{{receta.ingredientes}}</ion-label>
-    </ion-item>
+    <ion-row>
+      <ion-col size="8">Ingredientes: </ion-col>
+      <ion-col>{{receta.ingredientes}}</ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Ingrediente alergenos: </ion-label>
-      <ion-label>{{receta.ingredientesAlergenos}}</ion-label>
-    </ion-item>
+    <ion-row>
+      <ion-col>Ingrediente alergenos: </ion-col>
+      <ion-col size="12">{{receta.ingredientesAlergenos}}</ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Elaboración: </ion-label>
-      <ion-label>{{receta.description}}</ion-label>
-    </ion-item>
-
-  </ion-list>
-
+    <ion-row>
+        <ion-col>Elaboración: </ion-col> 
+        <ion-col size="12">{{receta.description}}</ion-col>  
+    </ion-row>
+  </ion-grid>
+  
 
 </ion-content>

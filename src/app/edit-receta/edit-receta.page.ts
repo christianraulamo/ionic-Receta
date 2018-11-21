@@ -25,14 +25,14 @@ export class EditRecetaPage implements OnInit {
     console.log(id);
     if (id) {
       this.edit = true;
-      this.receta = this.RecetaService.getTodoById(parseInt(id));
+      this.receta = this.RecetaService.getRecetaById(parseInt(id));
       console.log(this.receta);
     }    
   }
 
-  saveTodo(receta: Receta) {
+  guardarReceta(receta: Receta) {
     if(this.edit) {
-      this.RecetaService.saveTodo(this.receta).then(
+      this.RecetaService.guardarReceta(this.receta).then(
         () => this.nav.goBack(true),
         (error) => console.error('Error al guardarlo', error)
       );
@@ -40,7 +40,7 @@ export class EditRecetaPage implements OnInit {
       
       this.receta.id = this.RecetaService.recetaCounter;
       console.log(this.RecetaService.recetaCounter);
-      this.RecetaService.newTodo(this.receta).then(
+      this.RecetaService.nuevaReceta(this.receta).then(
         () => this.nav.goBack(true),
         (error) => console.error('Error al guardarlo', error)
       );

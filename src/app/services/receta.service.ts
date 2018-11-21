@@ -20,7 +20,7 @@ export class RecetaService implements Receta {
   constructor(private storage: Storage) {
   }
 
-  getTodos(): Promise<Receta[]> { 
+  getReceta(): Promise<Receta[]> { 
     this.storage.get('recetaCounter').then(
       data => this.recetaCounter
     );
@@ -32,23 +32,23 @@ export class RecetaService implements Receta {
   }
   
 
-  saveTodo(receta: Receta): Promise<any> {
-    let index = this.recetas.findIndex(t => t.id === receta.id);
+  guardarReceta(receta: Receta): Promise<any> {
+    let index = this.recetas.findIndex(r => r.id === receta.id);
     this.recetas[index] = receta;
 
     return this.storage.set('recetas', this.recetas);
   }
 
-  deleteTodo(id: number): Promise<any> {
-    this.recetas = this.recetas.filter(t => t.id !== id);
+  borararReceta(id: number): Promise<any> {
+    this.recetas = this.recetas.filter(r => r.id !== id);
     return this.storage.set('recetas', this.recetas);
   }
 
-  getTodoById(id: number): Receta {
-    return this.recetas.find(t => t.id === id);
+  getRecetaById(id: number): Receta {
+    return this.recetas.find(r => r.id === id);
   }
 
-  newTodo(receta: Receta): Promise<any> {
+  nuevaReceta(receta: Receta): Promise<any> {
     this.recetas.push(receta);
     this.recetaCounter++;
 
