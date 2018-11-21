@@ -8,6 +8,15 @@ const routes: Routes = [
   { path: 'edit/:id', loadChildren: './edit-receta/edit-receta.module#EditRecetaPageModule' },
   { path: 'info', loadChildren: './info-receta/info-receta.module#InfoRecetaPageModule' },
   { path: 'info/:id', loadChildren: './info-receta/info-receta.module#InfoRecetaPageModule' },
+  { path: 'Pescado', loadChildren: './pescado/pescado.module#PescadoPageModule' },
+  { path: 'Carne', loadChildren: './carne/carne.module#CarnePageModule' },
+  { path: 'Salsas', loadChildren: './salsas/salsas.module#SalsasPageModule' },
+  { path: 'Vegetales', loadChildren: './vegetales/vegetales.module#VegetalesPageModule' },
+  { path: 'Aperitivos', loadChildren: './aperitivos/aperitivos.module#AperitivosPageModule' },
+  { path: 'Aves', loadChildren: './aves/aves.module#AvesPageModule' },
+  { path: 'Postres', loadChildren: './postres/postres.module#PostresPageModule' },
+  { path: 'Sopa', loadChildren: './sopa/sopa.module#SopaPageModule' },
+  { path: 'Bebida', loadChildren: './bebida/bebida.module#BebidaPageModule' },
 ];
 
 @NgModule({

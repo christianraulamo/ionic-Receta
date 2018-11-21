@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Bebida</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button shape="round" href="/home">
+        </ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list lines="full">
+      <ion-item  *ngFor="let r of recetas">
+        <div *ngIf='r.categoria === "Bebida"' slot="start">
+          <ion-label *ngIf='r.categoria === "Pescado"' class="fas fa-fish"></ion-label>
+          <ion-label *ngIf='r.categoria === "Carne"' class="fas fa-drumstick-bite"></ion-label>
+          <ion-label *ngIf='r.categoria === "Salsas"' class="fas fa-mortar-pestle"></ion-label>
+          <ion-label *ngIf='r.categoria === "Vegetales"' class="fas fa-seedling"></ion-label>
+          <ion-label *ngIf='r.categoria === "Aperitivos"' class="fab fa-cloudsmith"></ion-label>
+          <ion-label *ngIf='r.categoria === "Aves"' class="fas fa-crow"></ion-label>
+          <ion-label *ngIf='r.categoria === "Postres"' class="fas fa-birthday-cake"></ion-label>
+          <ion-label *ngIf='r.categoria === "Sopa"' class="fas fa-utensil-spoon"></ion-label>
+          <ion-label *ngIf='r.categoria === "Bebida"' class="fas fa-cocktail"></ion-label>
+        </div>
+        <ion-label *ngIf='r.categoria === "Bebida"' (click)="infoRec(r.id)" slot="start">{{r.title}}</ion-label>
+        <ion-icon *ngIf='r.categoria === "Bebida"' slot="end" (click)="editReceta(r.id)" name="create" color="medium"></ion-icon>
+        <ion-icon *ngIf='r.categoria === "Bebida"' slot="end" (click)="deleteDialog(r.title, r.id)" name="trash" color="medium"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
