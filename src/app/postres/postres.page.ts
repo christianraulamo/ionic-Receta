@@ -39,7 +39,7 @@ export class PostresPage implements OnInit {
         }, {
           text: 'Aceptar',
           handler: () => {
-            this.recetaService.borararReceta(id).then(() => this.recetaService.getReceta().then(
+            this.recetaService.borrarReceta(id).then(() => this.recetaService.getReceta().then(
               data => this.recetas = data
               )
             );

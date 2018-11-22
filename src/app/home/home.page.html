@@ -14,36 +14,39 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-button shape="round" href="/Pescado" routerDirection="forward">
+    <ion-button shape="round" color="danger" (click)="mostrartodo()" routerDirection="forward">
+    <i class="fas fa-home"></i>
+  </ion-button>
+    <ion-button shape="round" (click)="ordenar('Pescado')" routerDirection="forward">
       <i class="fas fa-fish"></i>
     </ion-button>
-    <ion-button shape="round" href="/Carne" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Carne')" routerDirection="forward">
     <i class="fas fa-drumstick-bite"></i>
     </ion-button>
-    <ion-button shape="round" href="/Salsas" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Salsas')" routerDirection="forward">
     <i class="fas fa-mortar-pestle"></i>
     </ion-button>
-    <ion-button shape="round" href="/Vegetales" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Vegetales')" routerDirection="forward">
     <i class="fas fa-seedling"></i>
     </ion-button>
-    <ion-button shape="round" href="/Aperitivos" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Aperitivos')" routerDirection="forward">
     <i class="fab fa-cloudsmith"></i>
     </ion-button>
-    <ion-button shape="round" href="/Aves" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Aves')" routerDirection="forward">
     <i class="fas fa-crow"></i>
     </ion-button>
-    <ion-button shape="round" href="/Postres" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Postres')" routerDirection="forward">
     <i class="fas fa-birthday-cake"></i>
     </ion-button>
-    <ion-button shape="round" href="/Sopa" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Sopa')" routerDirection="forward">
     <i class="fas fa-utensil-spoon"></i>
     </ion-button>
-    <ion-button shape="round" href="/Bebida" routerDirection="forward">
+    <ion-button shape="round" (click)="ordenar('Bebida')" routerDirection="forward">
     <i class="fas fa-cocktail"></i>
     </ion-button>
   </ion-item>
   <ion-list lines="full">
-    <ion-item *ngFor="let r of recetas">
+    <ion-item *ngFor="let r of recetasMostrar">
       <div slot="start">
         <ion-label *ngIf='r.categoria === "Pescado"' class="fas fa-fish"></ion-label>
         <ion-label *ngIf='r.categoria === "Carne"' class="fas fa-drumstick-bite"></ion-label>
@@ -57,7 +60,7 @@
       </div>
       <ion-label (click)="infoRec(r.id)" slot="start">{{r.title}}</ion-label>
       <ion-icon slot="end" (click)="editReceta(r.id)" name="create" color="medium"></ion-icon>
-      <ion-icon slot="end" (click)="deleteDialog(r.title, r.id)" name="trash" color="medium"></ion-icon>
+      <ion-icon slot="end" (click)="deleteDialog(r.title, r.id, r.categoria)" name="trash" color="medium"></ion-icon>
     </ion-item>
   </ion-list>
 

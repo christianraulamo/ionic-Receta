@@ -39,7 +39,7 @@ export class RecetaService implements Receta {
     return this.storage.set('recetas', this.recetas);
   }
 
-  borararReceta(id: number): Promise<any> {
+  borrarReceta(id: number): Promise<any> {
     this.recetas = this.recetas.filter(r => r.id !== id);
     return this.storage.set('recetas', this.recetas);
   }

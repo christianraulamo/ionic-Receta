@@ -11,6 +11,7 @@ import { AlertController, NavController } from '@ionic/angular';
 export class HomePage implements OnInit {
 
   recetas: Receta[] = [];
+  recetasMostrar;
   constructor(private recetaService: RecetaService, private alertController: AlertController, private navController: NavController) {
   }
 
@@ -19,12 +20,15 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     this.recetaService.getReceta().then(
-      data => this.recetas = data 
+      data => {
+        this.recetas = data;
+        this.recetasMostrar = this.recetas;
+      }
     ); 
     console.log(this.recetas);
   }
 
-  async deleteDialog(title: string, id: number) {
+  async deleteDialog(title: string, id: number, categoria: string) {
     const alert = await this.alertController.create({
       header: 'Borrar receta',
       message: '¿Estás seguro que quieres borrar la receta <strong>' + title + '</strong>?',
@@ -39,8 +43,11 @@ export class HomePage implements OnInit {
         }, {
           text: 'Aceptar',
           handler: () => {
-            this.recetaService.borararReceta(id).then(() => this.recetaService.getReceta().then(
-              data => this.recetas = data
+            this.recetaService.borrarReceta(id).then(() => this.recetaService.getReceta().then(
+              data => { this.recetas = data;
+                this.ordenar(categoria);
+              // this.recetasMostrar = this.recetas;
+              }
               )
             );
             console.log('Borrar');
@@ -57,5 +64,22 @@ export class HomePage implements OnInit {
 
   infoRec(id: number) {
     this.navController.navigateForward('/info/' + id);
+  }
+
+  ordenar(categoria: string) {
+    console.log(categoria);
+    this.recetasMostrar= [];
+    for (var i = 0; i < this.recetas.length; i++ ){
+      console.log(this.recetas[i].categoria);
+      if(categoria === this.recetas[i].categoria){
+        this.recetasMostrar.push(this.recetas[i]);
+      }
+    }
+    console.log(this.recetasMostrar)
+  }
+
+  mostrartodo(){
+    this.recetasMostrar= [];
+    this.recetasMostrar = this.recetas;
   }
 }
