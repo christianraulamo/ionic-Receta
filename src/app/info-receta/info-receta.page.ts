@@ -11,22 +11,34 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InfoRecetaPage implements OnInit {
 
-  receta: Receta;
-  edit: boolean = false;
+  private receta: any;
 
-  val : any[];
-
-  constructor(private recetaService: RecetaService, private nav: NavController, private activatedRoute: ActivatedRoute) {
-    this.receta = {id: this.recetaService.recetaCounter, title: '', tiempoPrep: '', categoria: '', description: '', ingredientes: '', ingredientesAlergenos: ''};
-   }
+  constructor(private activatedRoute: ActivatedRoute,
+    private recetaService: RecetaService,
+    private navController: NavController) 
+    {this.receta = {
+      id: this.recetaService.recetas.length,
+      title : '',
+      tiempoPrep: '',
+      categoria: '',
+      description: '',
+      ingredientes: '',
+      ingredientesAlergenos: ''
+    };
+  }
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(id);
     if (id) {
-      this.edit = true;
-      this.receta = this.recetaService.getRecetaById(parseInt(id));
-      console.log(this.receta);
+      this.receta = this.recetaService.getReceta(+id);
+    } else {
+      this.receta = {};
+      this.receta.title = '';
+      this.receta.tiempoPrep = '';
+      this.receta.categoria = '';
+      this.receta.description = '';
+      this.receta.ingredientes = '';
+      this.receta.ingredientesAlergenos = '';
     }    
   }
 }

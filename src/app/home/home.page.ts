@@ -17,14 +17,15 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
   }
-
+ 
   ionViewWillEnter() {
-    this.recetaService.getReceta().then(
+
+    this.recetaService.getRecetas().then(
       data => {
         this.recetas = data;
         this.recetasMostrar = this.recetas;
       }
-    ); 
+    );
     console.log(this.recetas);
   }
 
@@ -43,14 +44,13 @@ export class HomePage implements OnInit {
         }, {
           text: 'Aceptar',
           handler: () => {
-            this.recetaService.borrarReceta(id).then(() => this.recetaService.getReceta().then(
-              data => { this.recetas = data;
-                this.ordenar(categoria);
-              // this.recetasMostrar = this.recetas;
-              }
-              )
-            );
-            console.log('Borrar');
+              this.recetaService.borrarReceta(id).then(
+                () => this.recetaService.getRecetas().then(
+                  data => { this.recetas = data;
+                    this.ordenar(categoria);
+                  }
+                )
+              );
           }
         }
       ]

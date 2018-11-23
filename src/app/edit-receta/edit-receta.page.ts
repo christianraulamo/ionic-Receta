@@ -11,39 +11,40 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditRecetaPage implements OnInit {
 
-  receta: Receta;
-  edit: boolean = false;
+  private receta: any;
 
-  val : any[];
-
-  constructor(private RecetaService: RecetaService, private nav: NavController, private activatedRoute: ActivatedRoute) {
-    this.receta = {id: this.RecetaService.recetaCounter, title: '', tiempoPrep: '', categoria: '', description: '', ingredientes: '', ingredientesAlergenos: ''};
-   }
+  constructor(private activatedRoute: ActivatedRoute,
+    private recetaService: RecetaService,
+    private navController: NavController) 
+    {this.receta = {
+      id: this.recetaService.recetas.length,
+      title : '',
+      tiempoPrep: '',
+      categoria: '',
+      description: '',
+      ingredientes: '',
+      ingredientesAlergenos: ''
+    };
+  }
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(id);
     if (id) {
-      this.edit = true;
-      this.receta = this.RecetaService.getRecetaById(parseInt(id));
-      console.log(this.receta);
+      this.receta = this.recetaService.getReceta(+id);
+    } else {
+      this.receta = {};
+      this.receta.title = '';
+      this.receta.tiempoPrep = '';
+      this.receta.categoria = '';
+      this.receta.description = '';
+      this.receta.ingredientes = '';
+      this.receta.ingredientesAlergenos = '';
     }    
   }
 
-  guardarReceta(receta: Receta) {
-    if(this.edit) {
-      this.RecetaService.guardarReceta(this.receta).then(
-        () => this.nav.goBack(true),
-        (error) => console.error('Error al guardarlo', error)
-      );
-    } else {
-      
-      this.receta.id = this.RecetaService.recetaCounter;
-      console.log(this.RecetaService.recetaCounter);
-      this.RecetaService.nuevaReceta(this.receta).then(
-        () => this.nav.goBack(true),
-        (error) => console.error('Error al guardarlo', error)
-      );
-    }
+  guardarReceta() {
+    this.recetaService.guardarReceta(this.receta).then(
+      () => this.navController.goBack(true)
+    );
   }
 }
