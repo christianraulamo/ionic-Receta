@@ -12,6 +12,7 @@ export class RecetaService {
   constructor(private storage: Storage) {
     this.getRecetas().then(
       data => {
+        if (data) {
         this.recetas = data;
         this.recetas.forEach(
           t => {
@@ -20,7 +21,7 @@ export class RecetaService {
             }
           });
         this.recetasCounter++;
-      }
+      } }
     );
   }
 
